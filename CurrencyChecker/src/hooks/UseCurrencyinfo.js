@@ -1,0 +1,15 @@
+import { useEffect, useState } from "react";
+
+
+function useCurrencyinfo(currency) {
+     const [data, setdata] = useState({})
+    useEffect(() => {
+        fetch(`https://open.er-api.com/v6/latest/${currency}`)
+        .then((res) => res.json())
+        .then((res) => setdata(res.rates))
+    }, [currency])
+ 
+    return data;
+}
+
+export default useCurrencyinfo;
